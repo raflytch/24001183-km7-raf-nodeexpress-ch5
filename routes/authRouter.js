@@ -14,6 +14,7 @@ router.post(
   roleChecker(["Superadmin"]),
   authController.createAdmin
 );
+
 router.get("/token", authenticate, authController.tokenChecker);
 
 module.exports = router;

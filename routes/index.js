@@ -13,7 +13,7 @@ router.use("/api-docs", SwaggerUI.serve, SwaggerUI.setup(swaggerDocument));
 router.use("/", System);
 router.use("/users", User);
 router.use("/auth", Auth);
-// router.use("/cars", Car);
+router.use("/cars", Car);
 router.use(systemController.onLost);
 
 module.exports = router;
