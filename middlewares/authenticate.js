@@ -1,4 +1,4 @@
-const { User } = require("../db/models");
+const { User, Auth } = require("../db/models");
 const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res, next) => {
@@ -58,7 +58,14 @@ module.exports = async (req, res, next) => {
       where: {
         id: payload.id,
       },
-      include: ["Auth"],
+      include: [
+        {
+          model: Auth,
+          as: "Auth",
+          attributes: ["email"],
+        },
+      ],
+      attributes: ["id", "name", "role"],
     });
 
     req.user = user;

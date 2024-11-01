@@ -74,12 +74,18 @@ const login = async (req, res, next) => {
       });
     }
 
-    const user = await Auth.findOne({
+    const auth = await Auth.findOne({
       where: { email },
-      include: ["User"],
+      include: [
+        {
+          model: User,
+          as: "User",
+          attributes: ["id", "name", "role"],
+        },
+      ],
     });
 
-    if (!user) {
+    if (!auth) {
       return res.status(404).json({
         status: "Error",
         message: "User not found",
@@ -89,7 +95,7 @@ const login = async (req, res, next) => {
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, auth.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({
@@ -103,9 +109,9 @@ const login = async (req, res, next) => {
 
     const token = jwt.sign(
       {
-        id: user.userId,
-        role: user.User.role,
-        email: user.email,
+        id: auth.userId,
+        email: auth.email,
+        role: auth.User.role,
       },
       process.env.JWT_SECRET,
       {
@@ -115,11 +121,12 @@ const login = async (req, res, next) => {
 
     return res.status(200).json({
       status: "Success",
-      message: "Login successful",
+      message: "User logged in successfully",
       data: {
-        id: user.userId,
-        role: user.User.role,
-        email: user.email,
+        id: auth.id,
+        email: auth.email,
+        userId: auth.userId,
+        role: auth.User.role,
         token,
       },
       isError: false,
@@ -171,6 +178,7 @@ const createAdmin = async (req, res, next) => {
     }
 
     const user = await Auth.findOne({ where: { email } });
+
     if (user) {
       return res.status(400).json({
         status: "Error",

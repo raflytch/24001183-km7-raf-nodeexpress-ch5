@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Auth, {
         foreignKey: {
           name: "userId",
+          as: "Auth",
           allowNull: false,
         },
         onDelete: "CASCADE",
