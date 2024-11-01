@@ -4,8 +4,10 @@ const authenticate = require("../middlewares/authenticate");
 const roleChecker = require("../middlewares/roleChecker");
 const upload = require("../middlewares/uploader");
 
+router.get("/available", authenticate, carController.availabeCars);
 router.get("/", authenticate, carController.getAllCars);
 router.get("/:id", authenticate, carController.getCarById);
+
 router.post(
   "/",
   authenticate,

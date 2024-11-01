@@ -300,10 +300,94 @@ const updateCar = async (req, res, next) => {
   }
 };
 
+const availabeCars = async (req, res, next) => {
+  try {
+    const { name, model, type, maxPrice, minPrice } = req.query;
+
+    if (minPrice !== undefined && isNaN(parseFloat(minPrice))) {
+      return res.status(400).json({
+        status: "Error",
+        message: "Minimum price must be a valid number",
+        data: null,
+        isError: true,
+        isSuccess: false,
+      });
+    }
+
+    if (maxPrice !== undefined && isNaN(parseFloat(maxPrice))) {
+      return res.status(400).json({
+        status: "Error",
+        message: "Maximum price must be a valid number",
+        data: null,
+        isError: true,
+        isSuccess: false,
+      });
+    }
+
+    if (minPrice && maxPrice && parseFloat(minPrice) > parseFloat(maxPrice)) {
+      return res.status(400).json({
+        status: "Error",
+        message: "Minimum price must be less than or equal to maximum price",
+        data: null,
+        isError: true,
+        isSuccess: false,
+      });
+    }
+
+    const conditions = {};
+
+    if (name) {
+      conditions.name = { [Op.iLike]: `%${name}%` };
+    }
+    if (model) {
+      conditions.model = { [Op.iLike]: `%${model}%` };
+    }
+    if (type) {
+      conditions.type = { [Op.iLike]: `%${type}%` };
+    }
+
+    if (minPrice && maxPrice) {
+      conditions.price = {
+        [Op.between]: [parseFloat(minPrice), parseFloat(maxPrice)],
+      };
+    } else if (minPrice) {
+      conditions.price = { [Op.gte]: parseFloat(minPrice) };
+    } else if (maxPrice) {
+      conditions.price = { [Op.lte]: parseFloat(maxPrice) };
+    }
+
+    const cars = await Car.findAll({
+      where: conditions,
+      order: [["createdAt", "DESC"]],
+    });
+
+    if (!cars || !cars.length) {
+      return res.status(404).json({
+        status: "Error",
+        message: "No cars found matching the criteria",
+        data: null,
+        isError: true,
+        isSuccess: false,
+      });
+    }
+
+    res.status(200).json({
+      status: "Success",
+      message: "Successfully retrieved available cars",
+      data: cars,
+      isError: false,
+      isSuccess: true,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllCars,
   getCarById,
   createCar,
   deleteCar,
   updateCar,
+  availabeCars,
 };
