@@ -88,11 +88,11 @@ const getCarById = async (req, res, next) => {
     const { id } = req.params;
     const car = await Car.findOne({
       where: {
-        id: req.params.id,
+        id: id,
       },
     });
 
-    if (!car) {
+    if (!car || car.length === 0) {
       return res.status(404).json({
         status: "Error",
         message: "Car not found",

@@ -163,68 +163,8 @@ const tokenChecker = (req, res, next) => {
   }
 };
 
-const createAdmin = async (req, res, next) => {
-  try {
-    const { username, email, password, address, age } = req.body;
-
-    if (!username || !password) {
-      return res.status(400).json({
-        status: "Error",
-        message: "Username and password are required",
-        data: null,
-        isError: true,
-        isSuccess: false,
-      });
-    }
-
-    const user = await Auth.findOne({ where: { email } });
-
-    if (user) {
-      return res.status(400).json({
-        status: "Error",
-        message: "User already exists",
-        data: null,
-        isError: true,
-        isSuccess: false,
-      });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = await User.create({
-      name: username,
-      address,
-      age,
-      role: "Admin",
-    });
-
-    const newAuth = await Auth.create({
-      email,
-      password: hashedPassword,
-      userId: newUser.id,
-    });
-
-    return res.status(201).json({
-      status: "Success",
-      message: "User created successfully",
-      data: {
-        newUser,
-        id: newAuth.id,
-        email: newAuth.email,
-        password: newAuth.password,
-        userId: newAuth.userId,
-      },
-      isError: false,
-      isSuccess: true,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
 module.exports = {
   register,
   login,
   tokenChecker,
-  createAdmin,
 };
