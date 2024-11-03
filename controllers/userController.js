@@ -16,7 +16,7 @@ const getAllUsers = async (req, res, next) => {
 
     if (age) {
       usersCondition.age = {
-        [Op.iLike]: `%${age}%`,
+        [Op.gte]: parseInt(age),
       };
     }
 

@@ -7,7 +7,7 @@ module.exports = {
         name: "Rafly Aziz Abdillah",
         age: 30,
         address: "Jalan Jalan Ke Jalan",
-        role: "Admin",
+        role: "Superadmin",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

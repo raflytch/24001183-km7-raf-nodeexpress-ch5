@@ -38,6 +38,11 @@ module.exports = (sequelize, DataTypes) => {
           isUrl: true,
         },
       },
+      isAvailable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
+      },
       createdBy: {
         type: DataTypes.STRING,
         defaultValue: "Admin",
