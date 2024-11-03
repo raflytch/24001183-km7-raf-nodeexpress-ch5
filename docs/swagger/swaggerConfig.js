@@ -15,6 +15,7 @@ const swaggerOptions = {
       contact: {
         name: "Rafly Aziz Abdillah",
         email: "raflyazizabdillah30@gmail.com",
+        url: "https://github.com/raflytch",
       },
     },
     servers: [
