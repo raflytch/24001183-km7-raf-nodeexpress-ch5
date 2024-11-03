@@ -96,13 +96,12 @@ npm install
      npm start
      ```
 
-4. **Dokumentasi API**
+# 4. Dokumentasi API
 
-   - Akses dokumentasi API melalui Swagger UI pada endpoint:
-     ```plaintext
-     http://localhost:3000/api-docs/
-     ```
-   - Untuk melihat koleksi Postman, akses di sini: [https://documenter.getpostman.com/view/36303997/2sAY4xB2JP](https://documenter.getpostman.com/view/36303997/2sAY4xB2JP).
+- Akses dokumentasi API melalui Swagger UI pada endpoint:
+  ```plaintext
+  http://localhost:3000/api-docs/
+  ```
 
 5. **Menggunakan Fitur Otorisasi di Swagger**
    - Setelah membuka Swagger UI, klik ikon gembok (Authorize) yang terletak di pojok kanan atas.
