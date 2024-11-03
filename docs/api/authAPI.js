@@ -1,4 +1,3 @@
-// authAPI.js
 module.exports = {
   paths: {
     "/auth/register": {

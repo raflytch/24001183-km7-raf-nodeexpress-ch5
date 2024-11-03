@@ -1,4 +1,3 @@
-// userAPI.js
 module.exports = {
   paths: {
     "/users": {

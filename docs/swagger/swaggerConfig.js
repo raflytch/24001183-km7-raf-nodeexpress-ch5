@@ -1,4 +1,3 @@
-// swagger.config.js
 const swaggerJsDoc = require("swagger-jsdoc");
 const systemAPI = require("../api/systemAPI");
 const authAPI = require("../api/authAPI");
@@ -44,7 +43,6 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
-// Gabungkan paths dari systemAPI dan authAPI
 Object.assign(swaggerDocs.paths, systemAPI.paths);
 Object.assign(swaggerDocs.paths, authAPI.paths);
 Object.assign(swaggerDocs.paths, userAPI.paths);
