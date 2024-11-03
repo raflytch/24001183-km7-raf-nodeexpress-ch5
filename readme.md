@@ -83,10 +83,15 @@ npm install
      ```
 
 3. **Dokumentasi API**
+
    - Akses dokumentasi API melalui Swagger UI pada endpoint:
      ```plaintext
      http://localhost:3000/api-docs/
      ```
+
+4. **Menggunakan Fitur Otorisasi di Swagger**
+   - Setelah membuka Swagger UI, klik ikon gembok (Authorize) yang terletak di pojok kanan atas.
+   - Masukkan token JWT yang didapat setelah melakukan login, dan klik "Authorize". Ini akan memungkinkan akses ke endpoint yang memerlukan autentikasi.
 
 ## Struktur Endpoint Utama
 
@@ -113,6 +118,7 @@ npm install
   - `DELETE /:id` - Menghapus mobil (Hanya `Superadmin` dan `Admin`)
 
 - **System Routes** (`/system`)
+
   - `GET /health-check` - Memeriksa status API
 
 ## Script Command
