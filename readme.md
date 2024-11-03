@@ -102,6 +102,8 @@ npm install
   ```plaintext
   http://localhost:3000/api-docs/
   ```
+- Akses dokumentasi API melalui Swagger:
+  [http://localhost:3000/api-docs/](http://localhost:3000/api-docs/)
 
 5. **Menggunakan Fitur Otorisasi di Swagger**
    - Setelah membuka Swagger UI, klik ikon gembok (Authorize) yang terletak di pojok kanan atas.
