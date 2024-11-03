@@ -75,7 +75,7 @@ npm install
      IMAGEKIT_URL=
      ```
 
-2. **Menjalankan Koneksi Database** (Opsional)
+2. **Menjalankan Koneksi Database**
 
    - Sebelum menjalankan server, Anda bisa membuat, memigrasi, atau mengisi database menggunakan perintah berikut:
 
