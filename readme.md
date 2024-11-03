@@ -2,6 +2,10 @@
 
 Car Management API adalah sistem yang digunakan untuk mengelola data mobil dengan fitur CRUD yang dilengkapi dengan otentikasi berbasis token dan peran pengguna. API ini mendukung fitur otorisasi dengan role-based access control (RBAC) dan mengelola file gambar mobil menggunakan ImageKit. Sistem ini juga dilengkapi dengan dokumentasi API berbasis Swagger untuk memudahkan pengembang dalam memahami endpoint yang tersedia.
 
+## DIAGRAM DATABASE
+
+<img src="./docs/public/DB_DIAGRAM.png">
+
 ### Pencipta
 
 Rafly Aziz Abdillah
