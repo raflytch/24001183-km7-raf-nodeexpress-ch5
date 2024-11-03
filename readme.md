@@ -71,7 +71,17 @@ npm install
      IMAGEKIT_URL=
      ```
 
-2. **Menjalankan Server**
+2. **Menjalankan Koneksi Database** (Opsional)
+
+   - Sebelum menjalankan server, Anda bisa membuat, memigrasi, atau mengisi database menggunakan perintah berikut:
+
+     ```bash
+     npm run db:create   # Opsional: Membuat database baru
+     npm run db:migrate  # Menjalankan migrasi database
+     npm run db:seed     # Opsional: Menjalankan seed data
+     ```
+
+3. **Menjalankan Server**
 
    - Untuk menjalankan dalam mode pengembangan:
      ```bash
@@ -82,14 +92,14 @@ npm install
      npm start
      ```
 
-3. **Dokumentasi API**
+4. **Dokumentasi API**
 
    - Akses dokumentasi API melalui Swagger UI pada endpoint:
      ```plaintext
      http://localhost:3000/api-docs/
      ```
 
-4. **Menggunakan Fitur Otorisasi di Swagger**
+5. **Menggunakan Fitur Otorisasi di Swagger**
    - Setelah membuka Swagger UI, klik ikon gembok (Authorize) yang terletak di pojok kanan atas.
    - Masukkan token JWT yang didapat setelah melakukan login, dan klik "Authorize". Ini akan memungkinkan akses ke endpoint yang memerlukan autentikasi.
 
